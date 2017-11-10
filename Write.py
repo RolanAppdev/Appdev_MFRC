@@ -10,7 +10,7 @@ import errno
 import subprocess
 import time
 import socket
-import argparse
+#import argparse
 #from google_script import GoogleCalendar
 
 #Lights must be passed as a list of pins.
@@ -80,7 +80,9 @@ except(IOError, ValueError):
     with open(path, 'w') as JSONFile:
         JSONFile.write("[]")
         count = -1
-        JSONData = []
+    subprocess.call(['sudo', 'chmod', '777', '/var/www/html/data/UserData.json'])
+    with open(path) as JSONFile:
+        JSONData = json.load(JSONFile)
 
 if count != -1:
     count = len(JSONData) - 1
